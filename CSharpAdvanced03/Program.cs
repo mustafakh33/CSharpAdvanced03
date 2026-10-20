@@ -253,6 +253,54 @@
                 Console.WriteLine("Queue is empty. No documents to print.");
             }
             #endregion
+
+            #region Exercise 6: Browser History (Undo)
+            // Step 1: Create a Stack and push 5 URLs
+            Stack<string> history = new Stack<string>();
+
+            history.Push("google.com");
+            history.Push("github.com");
+            history.Push("stackoverflow.com");
+            history.Push("youtube.com");
+            history.Push("claude.ai");
+
+            // Step 2: Peek at the current page
+            Console.WriteLine();
+            Console.WriteLine("==================================");
+            Console.WriteLine("Browser History:");
+            Console.WriteLine($"Current page: {history.Peek()}");
+            Console.WriteLine($"History count: {history.Count}");
+
+            // Step 3: Press Back 3 times
+            Console.WriteLine("\nGoing back:");
+
+            for (int i = 0; i < 3; i++)
+            {
+                string page = history.Pop();
+                Console.WriteLine($"Leaving: {page}");
+            }
+
+            // Step 4: Print the current page
+            Console.WriteLine($"\nCurrent page after going back: {history.Peek()}");
+
+            // Empty the remaining history
+            while (history.Count > 0)
+            {
+                history.Pop();
+            }
+
+            // Step 5: Try to pop from an empty Stack
+            Console.WriteLine($"\nHistory count: {history.Count}");
+
+            if (history.TryPop(out string? page2))
+            {
+                Console.WriteLine($"Leaving: {page2}");
+            }
+            else
+            {
+                Console.WriteLine("History is empty. Cannot go back.");
+            }
+            #endregion
         }
     }
 }
