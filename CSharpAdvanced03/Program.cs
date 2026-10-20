@@ -152,6 +152,64 @@
             Console.WriteLine(string.Join(", ", phoneBook.Values));
 
             #endregion
+
+            #region Exercise 4: Unique Email Validator
+
+            // 1. Create a case-insensitive HashSet
+            HashSet<string> emails = new HashSet<string>(
+                StringComparer.OrdinalIgnoreCase
+            );
+
+            // 2. Add emails
+            emails.Add("ahmed@test.com");
+            emails.Add("AHMED@test.com");
+            emails.Add("sara@test.com");
+            emails.Add("Sara@Test.Com");
+
+            // 3. Print Count
+            Console.WriteLine("Unique Emails Count: " + emails.Count);
+            Console.WriteLine("Stored Emails:");
+
+            foreach (string email in emails)
+            {
+                Console.WriteLine(email);
+            }
+
+            // 4. Create Set A and Set B
+            HashSet<int> setA = new HashSet<int> { 1, 2, 3, 4, 5 };
+            HashSet<int> setB = new HashSet<int> { 4, 5, 6, 7, 8 };
+
+            // Create copies for independent operations
+            HashSet<int> unionSet = new HashSet<int>(setA);
+            HashSet<int> intersectionSet = new HashSet<int>(setA);
+            HashSet<int> differenceSet = new HashSet<int>(setA);
+
+            // 5. UnionWith
+            unionSet.UnionWith(setB);
+
+            Console.WriteLine("\nUnionWith:");
+            Console.WriteLine(string.Join(", ", unionSet.OrderBy(n => n)));
+
+            // 6. IntersectWith
+            intersectionSet.IntersectWith(setB);
+
+            Console.WriteLine("\nIntersectWith:");
+            Console.WriteLine(string.Join(", ", intersectionSet.OrderBy(n => n)));
+
+            // 7. ExceptWith
+            differenceSet.ExceptWith(setB);
+
+            Console.WriteLine("\nExceptWith:");
+            Console.WriteLine(string.Join(", ", differenceSet.OrderBy(n => n)));
+
+            // 8. IsSubsetOf
+            HashSet<int> subset = new HashSet<int> { 1, 2 };
+
+            Console.WriteLine(
+                $"\nIs {{1, 2}} a subset of Set A? {subset.IsSubsetOf(setA)}"
+            );
+
+            #endregion
         }
     }
 }
