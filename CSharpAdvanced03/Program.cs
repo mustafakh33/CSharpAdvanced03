@@ -51,6 +51,51 @@
             Console.WriteLine("\nGrade Descriptions:");
             Console.WriteLine(string.Join(", ", gradeDescriptions));
             #endregion
+
+            #region Exercise 2: Leaderboard
+            SortedDictionary<int, string> leaderboard = new SortedDictionary<int, string>();
+
+            // 1. Add players
+            leaderboard.Add(500, "Ahmed");
+            leaderboard.Add(200, "Sara");
+            leaderboard.Add(800, "Ali");
+            leaderboard.Add(350, "Mona");
+
+            // 2. Print all entries
+            Console.WriteLine("Leaderboard:");
+
+            foreach (KeyValuePair<int, string> player in leaderboard)
+            {
+                Console.WriteLine($"Score: {player.Key}, Player: {player.Value}");
+            }
+
+            // 3. Access the first key and first value
+            Console.WriteLine($"\nFirst Key: {leaderboard.First().Key}");
+            Console.WriteLine($"First Value: {leaderboard.First().Value}");
+
+            // 4. Check if score 500 exists
+            Console.WriteLine($"\nScore 500 Exists: {leaderboard.ContainsKey(500)}");
+
+            // 5. Safely get the player with score 999
+            if (leaderboard.TryGetValue(999, out string? playerName))
+            {
+                Console.WriteLine($"Player with score 999: {playerName}");
+            }
+            else
+            {
+                Console.WriteLine("No player found with score 999.");
+            }
+
+            // 6. Remove the player with score 200
+            leaderboard.Remove(200);
+
+            Console.WriteLine("\nUpdated Leaderboard:");
+
+            foreach (KeyValuePair<int, string> player in leaderboard)
+            {
+                Console.WriteLine($"Score: {player.Key}, Player: {player.Value}");
+            }
+            #endregion
         }
     }
 }
