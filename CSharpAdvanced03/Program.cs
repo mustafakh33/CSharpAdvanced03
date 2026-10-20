@@ -210,6 +210,49 @@
             );
 
             #endregion
+
+            #region Exercise 5: Print Queue Simulator
+            // Step 1: Create a Queue and add documents
+            Queue<string> printQueue = new Queue<string>();
+
+            printQueue.Enqueue("Report.pdf");
+            printQueue.Enqueue("Invoice.pdf");
+            printQueue.Enqueue("Letter.docx");
+            printQueue.Enqueue("Resume.pdf");
+            printQueue.Enqueue("Photo.jpg");
+
+            // Step 2: Print queue contents and count
+            Console.WriteLine();
+            Console.WriteLine("==================================");
+            Console.WriteLine("Print Queue:");
+            Console.WriteLine(string.Join(", ", printQueue));
+            Console.WriteLine($"Count: {printQueue.Count}");
+
+            // Step 3: Peek at the next document
+            Console.WriteLine($"\nNext document: {printQueue.Peek()}");
+            Console.WriteLine($"Count after Peek: {printQueue.Count}");
+
+            // Step 4: Process the queue
+            Console.WriteLine("\nProcessing Queue:");
+
+            while (printQueue.Count > 0)
+            {
+                string document = printQueue.Dequeue();
+                Console.WriteLine($"Printing: {document}");
+            }
+
+            // Step 5: Try to dequeue from an empty queue
+            Console.WriteLine($"\nCount after printing: {printQueue.Count}");
+
+            if (printQueue.TryDequeue(out string? document2))
+            {
+                Console.WriteLine($"Printing: {document2}");
+            }
+            else
+            {
+                Console.WriteLine("Queue is empty. No documents to print.");
+            }
+            #endregion
         }
     }
 }
